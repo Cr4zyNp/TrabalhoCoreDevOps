@@ -80,7 +80,7 @@ jobs:
     runs-on: windows-latest
     needs: analise-sonar
     environment:
-      name: 'Production'
+      name: 'dev'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
