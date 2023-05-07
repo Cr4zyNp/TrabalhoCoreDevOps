@@ -75,9 +75,10 @@ jobs:
   deploy-dev:
     name: Deploy no Azure - Dev
     runs-on: ubuntu-latest # For Linux, use ubuntu-latest
-    environment: dev
-    needs: analise-sonar
-    url: https://trabalhodevops15dvp-dev.azurewebsites.net/
+    environment: 
+      name: dev
+      url: https://trabalhodevops15dvp-dev.azurewebsites.net/
+    needs: analise-sonar    
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
