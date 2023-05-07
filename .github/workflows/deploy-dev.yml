@@ -29,10 +29,10 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      
+
   deploy-dev:
     name: Deploy no Azure - Dev
-    runs-on: ubuntu-latest # For Linux, use ubuntu-latest
+    runs-on: windows-latest # For Linux, use ubuntu-latest
     environment: 
       name: dev
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
