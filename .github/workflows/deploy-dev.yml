@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-analise-sonar:
+  analise-sonar:
     name: Build and analyze
     runs-on: windows-latest
     needs: build
@@ -72,9 +72,10 @@ analise-sonar:
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"      
 
-deploy-dev:
+  deploy-dev:
     runs-on: ubuntu-latest # For Linux, use ubuntu-latest
     environment: dev
+    needs: analise-sonar
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
