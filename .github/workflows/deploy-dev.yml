@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-
+    name: Build de Aplicação Executa teste 
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
   analise-sonar:
-    name: Build and analyze
+    name: Analise SonarCloud 
     runs-on: windows-latest
     needs: build
     steps:
@@ -73,9 +73,11 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"      
 
   deploy-dev:
+    name: Deploy no Azure - Dev
     runs-on: ubuntu-latest # For Linux, use ubuntu-latest
     environment: dev
     needs: analise-sonar
+    url: https://trabalhodevops15dvp-dev.azurewebsites.net/
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
