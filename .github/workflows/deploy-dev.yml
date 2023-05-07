@@ -32,7 +32,7 @@ jobs:
 
   deploy-dev:
     name: Deploy no Azure - Dev
-    runs-on: windows-latest # For Linux, use ubuntu-latest
+    runs-on: windows-latest # For Linux, use ubuntu-latest # Windows, use windows-latest 
     environment: 
       name: dev
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
@@ -53,7 +53,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: bash # For Linux, use bash
+      shell: pwsh # For Linux, use bash # Windows , use pwsh
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         dotnet build --configuration Release --output ./output
